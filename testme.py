@@ -11,7 +11,7 @@ class Car(sim.Component):
             
             start_drive=env.now()
             # driving along the road
-            yield self.hold(sim.Normal(6,2),mode='drive')
+            yield self.hold(sim.Normal(drive_time,standard_dev1),mode='drive')
             end_drive=env.now()
             dist=(end_drive-start_drive)*speed
             
@@ -19,7 +19,7 @@ class Car(sim.Component):
             holding.tally(tot_dist)
                                                 
             # stop for a coffee
-            yield self.hold(sim.Normal(10,5),mode='break')
+            yield self.hold(sim.Normal(break_time,standard_dev2),mode='break')
             holding.tally(tot_dist)
             
 
@@ -33,8 +33,8 @@ col1, col2 = st.columns([3,1])
 drive_time=col1.slider('drive time min',30,120)
 break_time=col1.slider('break time min',5,30)
 
-standard_dev1=col1.slider('standard deviation min',5,30)
-standard_dev2=col1.slider('standard deviation',1,10)
+standard_dev1=col2.slider('standard deviation min',5,30)
+standard_dev2=col2.slider('standard deviation',1,10)
 
 
 holding=sim.Monitor('holding_time')
