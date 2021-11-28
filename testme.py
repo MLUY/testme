@@ -27,9 +27,7 @@ Car()
 
 holding=sim.Monitor('holding_time')
 
-runme=st.button('click to run')
-
-if runme:
+if st.button('click to run'):
     env.run(till=100)
 
 tot_dist=holding.xt()
