@@ -8,8 +8,8 @@ class Car(sim.Component):
     def setup(self,d1,s1,b1,s2):
         self.d1=d1
         self.s1=s1
-        self.d2=d2
-        self.s1=s1     
+        self.b1=b1
+        self.s2=s2     
     
     def process(self):
         tot_dist=0
