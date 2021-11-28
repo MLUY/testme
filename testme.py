@@ -54,3 +54,4 @@ ax.plot(tot_dist[1],tot_dist[0],label='distance driven')
 
 st.write(fig)
 
+set.write(print(tot_dist))
