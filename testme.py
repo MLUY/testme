@@ -41,7 +41,7 @@ standard_dev2=col2.slider('standard deviation min',1,10)
          
 holding=sim.Monitor('holding_time')
 Car(d1=drive_time,s1=standard_dev1,b1=break_time,s2=standard_dev2)
-env=sim.Environment(trace=True) 
+env=sim.Environment(trace=False) 
 
 if st.button('click to run'):
     env.run(till=100)
