@@ -52,5 +52,5 @@ fig,ax=plt.subplots(figsize=(15,5),nrows=1,ncols=1)
 
 ax.plot(tot_dist[1],tot_dist[0],label='distance driven') 
 
-st.write(fig)
+st.write(tot_dist)
 
