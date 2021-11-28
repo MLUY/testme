@@ -37,10 +37,10 @@ drive_time=col1.slider('drive time min',30,120)
 break_time=col1.slider('break time min',5,30)
 
 standard_dev1=col2.slider('standard deviation min',5,30)
-standard_dev2=col2.slider('standard deviation',1,10)
+standard_dev2=col2.slider('standard deviation min',1,10)
          
 holding=sim.Monitor('holding_time')
-Car(drive_time=1,standard_dev1=1,break_time=1,standard_dev2=1)
+Car(drive_time,standard_dev1,break_time,standard_dev2)
 env=sim.Environment(trace=True) 
 
 if st.button('click to run'):
