@@ -40,7 +40,7 @@ standard_dev1=col2.slider('standard deviation min',5,30)
 standard_dev2=col2.slider('standard deviation min',1,10)
          
 holding=sim.Monitor('holding_time')
-Car(d1=drive_time,s1=standard_dev1,b1=break_time,s2=standard_dev2)
+Car(d1=30,s1=5,b1=5,s2=2)
 env=sim.Environment(trace=False) 
 
 if st.button('click to run'):
@@ -53,5 +53,3 @@ fig,ax=plt.subplots(figsize=(15,5),nrows=1,ncols=1)
 ax.plot(tot_dist[1],tot_dist[0],label='distance driven') 
 
 st.write(fig)
-
-set.write(tot_dist)
