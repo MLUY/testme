@@ -45,7 +45,7 @@ holding=sim.Monitor('holding_time')
 if st.button('click to run'):
     car=Car(d1=drive_time,s1=standard_dev1,b1=break_time,s2=standard_dev2)
     env.run(till=100)
-    car.remove()
+    del car
 
 tot_dist=holding.xt()
 
