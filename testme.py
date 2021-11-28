@@ -1,5 +1,6 @@
 import salabim as sim
 import matplotlib.pyplot as plt
+import streamlit as st
 
 speed=3 #m/s
 
