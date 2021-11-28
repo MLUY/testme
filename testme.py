@@ -5,13 +5,19 @@ import streamlit as st
 speed=3 #m/s
 
 class Car(sim.Component):
+    def setup(self,d1,s1,b1,s2):
+        self.d1=d1
+        self.s1=s1
+        self.d2=d2
+        self.s1=s1     
+    
     def process(self):
         tot_dist=0
         while True:
             
             start_drive=env.now()
             # driving along the road
-            yield self.hold(sim.Normal(drive_time,standard_dev1),mode='drive')
+            yield self.hold(sim.Normal(d1,s1),mode='drive')
             end_drive=env.now()
             dist=(end_drive-start_drive)*speed
             
@@ -19,12 +25,11 @@ class Car(sim.Component):
             holding.tally(tot_dist)
                                                 
             # stop for a coffee
-            yield self.hold(sim.Normal(break_time,standard_dev2),mode='break')
+            yield self.hold(sim.Normal(b1,s2),mode='break')
             holding.tally(tot_dist)
             
 
 env=sim.Environment(trace=True)            
-Car()
 
 # columns
 col1, col2 = st.columns([3,1])
@@ -36,8 +41,9 @@ break_time=col1.slider('break time min',5,30)
 standard_dev1=col2.slider('standard deviation min',5,30)
 standard_dev2=col2.slider('standard deviation',1,10)
 
-
 holding=sim.Monitor('holding_time')
+
+Car(drive_time,standard_dev1,break_time,standard_dev2)
 
 if st.button('click to run'):
     env.run(till=100)
