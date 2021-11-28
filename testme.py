@@ -33,10 +33,10 @@ class Car(sim.Component):
 col1, col2 = st.columns([3,1])
 
 # sliders
-drive_time=col1.slider('drive time min',30,120)
+drive_time=col1.slider('drive time min',5,120)
 break_time=col1.slider('break time min',5,30)
 
-standard_dev1=col2.slider('standard deviation min',5,20)
+standard_dev1=col2.slider('standard deviation min',1,5)
 standard_dev2=col2.slider('standard deviation min',1,2)
 
 env=sim.Environment(trace=False)     
