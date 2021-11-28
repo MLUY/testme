@@ -26,10 +26,8 @@ class Car(sim.Component):
                                                 
             # stop for a coffee
             yield self.hold(sim.Normal(b1,s2),mode='break')
-            holding.tally(tot_dist)
-            
+            holding.tally(tot_dist)           
 
-env=sim.Environment(trace=True)            
 
 # columns
 col1, col2 = st.columns([3,1])
@@ -41,8 +39,8 @@ break_time=col1.slider('break time min',5,30)
 standard_dev1=col2.slider('standard deviation min',5,30)
 standard_dev2=col2.slider('standard deviation',1,10)
 
+env=sim.Environment(trace=True)          
 holding=sim.Monitor('holding_time')
-
 Car(drive_time=1,standard_dev1=1,break_time=1,standard_dev2=1)
 
 if st.button('click to run'):
