@@ -26,6 +26,17 @@ class Car(sim.Component):
 env=sim.Environment(trace=True)            
 Car()
 
+# columns
+col1, col2 = st.columns([3,1])
+
+# sliders
+drive_time=col1.slider('drive time min',30,120)
+break_time=col1.slider('break time min',5,30)
+
+standard_dev1=col1.slider('standard deviation min',5,30)
+standard_dev2=col1.slider('standard deviation',1,10)
+
+
 holding=sim.Monitor('holding_time')
 
 if st.button('click to run'):
