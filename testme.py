@@ -33,8 +33,8 @@ class Car(sim.Component):
 col1, col2 = st.columns([3,1])
 
 # sliders
-drive_time=col1.slider('drive time min',5,120)
-break_time=col1.slider('break time min',5,30)
+drive_time=col1.slider('drive time min',10,120)
+break_time=col1.slider('break time min',10,120)
 
 standard_dev1=col2.slider('standard deviation min',1,5)
 standard_dev2=col2.slider('standard deviation min',1,2)
@@ -43,10 +43,10 @@ env=sim.Environment(trace=False)
 holding=sim.Monitor('holding_time')
 
 if st.button('click to run'):
+    del car
     car=Car(d1=drive_time,s1=standard_dev1,b1=break_time,s2=standard_dev2)
     env.run(till=1000)
-    del car
-
+    
 tot_dist=holding.xt()
 
 fig,ax=plt.subplots(figsize=(15,5),nrows=1,ncols=1)
