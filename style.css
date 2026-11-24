@@ -1,0 +1,222 @@
+:root {
+  --bg: #f6f7f9;
+  --card: #ffffff;
+  --text: #1f2933;
+  --muted: #6b7280;
+  --border: #e3e6ea;
+  --accent: #3b6ef5;
+  --accent-dark: #2a55c9;
+  --danger: #d64545;
+  --grid: #eef0f3;
+  --weekend: #f8f9fb;
+  --today: #e8590c;
+  --label-width: 180px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+main {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1 { margin: 0 0 24px; font-size: 1.6rem; }
+h2 { margin: 0 0 12px; font-size: 1.15rem; }
+
+section {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px;
+  margin-bottom: 24px;
+}
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.section-head h2 { margin: 0; }
+
+.muted { color: var(--muted); }
+
+button {
+  font: inherit;
+  cursor: pointer;
+  border-radius: 6px;
+  border: 1px solid transparent;
+  padding: 6px 12px;
+}
+
+#add-task {
+  background: var(--accent);
+  color: #fff;
+}
+#add-task:hover { background: var(--accent-dark); }
+
+.delete-btn {
+  background: transparent;
+  color: var(--danger);
+  border-color: var(--border);
+}
+.delete-btn:hover { background: #fdecec; border-color: var(--danger); }
+
+/* ---------- Table ---------- */
+.table-wrap { overflow-x: auto; }
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  text-align: left;
+  padding: 6px 8px;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+}
+
+th {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+td input {
+  font: inherit;
+  width: 100%;
+  padding: 6px 8px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #fff;
+}
+td input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(59, 110, 245, 0.15);
+}
+td input.invalid { border-color: var(--danger); }
+
+td.col-title { min-width: 220px; width: 45%; }
+td.col-duration input { width: 90px; }
+td.col-end { color: var(--muted); }
+td.col-actions { width: 1%; text-align: right; }
+
+/* ---------- Gantt ---------- */
+.gantt {
+  overflow-x: auto;
+  font-size: 0.85rem;
+}
+
+.gantt-inner {
+  position: relative;
+  min-width: 100%;
+}
+
+.gantt-row {
+  display: flex;
+  align-items: stretch;
+  height: 34px;
+  border-bottom: 1px solid var(--border);
+}
+
+.gantt-label {
+  flex: 0 0 var(--label-width);
+  width: var(--label-width);
+  padding: 0 10px 0 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  position: sticky;
+  left: 0;
+  background: var(--card);
+  z-index: 2;
+}
+.gantt-label span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.gantt-track {
+  position: relative;
+  flex: 1 0 auto;
+}
+
+.gantt-header {
+  height: 44px;
+  border-bottom: 1px solid var(--border);
+}
+.gantt-header .gantt-label {
+  color: var(--muted);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-weight: 600;
+}
+
+.day-cell {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  border-left: 1px solid var(--grid);
+}
+.day-cell.weekend { background: var(--weekend); }
+
+.gantt-header .day-cell {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  padding-bottom: 4px;
+  color: var(--muted);
+  font-size: 0.7rem;
+  line-height: 1.2;
+}
+.gantt-header .month {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.gantt-bar {
+  position: absolute;
+  top: 7px;
+  height: 20px;
+  border-radius: 5px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.72rem;
+  line-height: 20px;
+  padding: 0 6px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  z-index: 1;
+}
+
+.today-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--today);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.gantt-empty {
+  padding: 24px 0;
+  color: var(--muted);
+}
